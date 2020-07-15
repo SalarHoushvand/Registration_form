@@ -12,7 +12,7 @@ UPLOAD_FOLDER = dir_path + '/static/images/user_img'
 
 # set app configs and database
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/form1'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://rqodnvybmqdysn:9ee3977d1c8650443397c39fab330bb7daba062a4acb34783c9194319a4fdc04@ec2-52-22-216-69.compute-1.amazonaws.com:5432/d2pj7anncnudvr'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 app.debug = True
