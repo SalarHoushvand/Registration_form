@@ -67,14 +67,14 @@ def form():
         # getting image and adding to the folder
         # check if the post request has the file part
         if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
+            log = 'Image field is empty.'
+            return render_template('fail.html', log = log)
         file = request.files['file']
         # if user does not select file, browser also
         # submit an empty part without filename
         if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
+            log = 'Empty filename.'
+            return render_template('fail.html', log=log)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -103,7 +103,7 @@ def form():
 @app.route("/success")
 def success():
     my_user = User.query.all()
-    return render_template('success.html', my_user=my_user[-1])
+    return render_template('success2.html', my_user=my_user[-1])
 
 
 if __name__ == '__main__':

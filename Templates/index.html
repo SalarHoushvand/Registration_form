@@ -18,13 +18,13 @@
 
             <div class="input-fields">
 
-                <input type="text" class="input" placeholder="Name" id="username" name="username">
-                <input type="text" class="input" placeholder="Email" id="email" name="email">
-                <input type="text" class="input" placeholder="Contact Number" id="number" name="number">
-                <input type="text" class="input" placeholder="Street" id="street" name="street">
-                <input type="text" class="input" placeholder="City" id="city" name="city">
+                <input required type="text" class="input" placeholder="Name" id="username" name="username">
+                <input required type="text" class="input" placeholder="Email" id="email" name="email">
+                <input required type="text" class="input" placeholder="Contact Number" id="number" name="number">
+                <input required type="text" class="input" placeholder="Street" id="street" name="street">
+                <input required type="text" class="input" placeholder="City" id="city" name="city">
                 
-                <select class="input" id="state" name="state">
+                <select required class="input" id="state" name="state">
                     <option class="dropdown">State</option>
                     <option value="AL">AL</option>
                     <option value="AK">AK</option>
@@ -79,7 +79,7 @@
                     <option value="WY">WY</option>
                 </select>
 
-                <input type="text" class="input" placeholder="Zip Code" id="zip" name="zip">
+                <input required type="text" class="input" placeholder="Zip Code" id="zip" name="zip">
 
 
             </div>
@@ -88,8 +88,8 @@
                 <textarea name="feedback" id="feedback" cols="30" rows="10" placeholder="Feedback"></textarea>
                 <div class="choose-file">
                     <label for="choose-file">
-                        <input type="file" id="choose-file" name="file">
-                        <span>Upload Picture</span>
+                        <input  type="file" id="choose-file" name="file">
+                        <span>Upload Picture *</span>
                     </label>
 
                 </div>

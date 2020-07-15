@@ -157,3 +157,6 @@ option{
 .entries{
     color: #c5efcd;
 }
+.rounded-circle{
+    border-radius: 100%;
+}
