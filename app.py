@@ -96,7 +96,7 @@ def form():
 
         return redirect(url_for('success'))
     else:
-        return render_template('index.html')
+        return render_template('home.html')
 
 
 # function for rendering the success.html after submitting the form
