@@ -33,6 +33,7 @@ background: rgb(0, 0, 0, 0.8);
 padding: 30px;
 border-radius: 5px;
 display: flex;
+flex-direction: row;
 box-shadow: 0 0 10px rgb(0, 0, 0, 0.13);
 }
 
@@ -87,9 +88,9 @@ box-shadow: 0 0 10px rgb(0, 0, 0, 0.13);
     border: none;
 }
 
-@media screen and (max-width: 600px){
+@media (max-width:600px){
     .contact-form{
-        flex-direction: column;
+        flex-direction: column !important;
     }
 
     .msg textarea{
