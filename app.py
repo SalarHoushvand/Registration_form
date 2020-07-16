@@ -2,13 +2,14 @@ import os
 from flask import Flask, render_template, request, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import redirect, secure_filename
+import boto3
 
 # define allowed extensions
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 # set upload directory
-dir_path = os.path.dirname(os.path.realpath(__file__))
-UPLOAD_FOLDER = dir_path + '/static/images/user_img'
+#dir_path = os.path.dirname(os.path.realpath(__file__))
+#UPLOAD_FOLDER = dir_path + '/static/images/user_img'
 #
 # set app configs and database
 app = Flask(__name__)
@@ -17,7 +18,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 app.debug = True
 db = SQLAlchemy(app)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+#app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 # check allowed extensions
@@ -60,6 +61,9 @@ db.create_all()
 # main function to upload form data to database
 @app.route("/", methods=['GET', 'POST'])
 def form():
+    s3 = boto3.resource('s3')
+
+
 
     global img_link
     if request.method == 'POST':
@@ -77,8 +81,9 @@ def form():
             return render_template('fail.html', log=log)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            img_link = '../static/images/user_img/' + filename
+            #file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            img_link = 'https://regform2020.s3.us-east-2.amazonaws.com/' + filename
+            s3.Bucket('regform2020').put_object(Key=filename, Body=file)
 
         # text data for postgres
         user = User(request.form['username'],
